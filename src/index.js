@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import NewUserForm from './components/NewUserForm';
 
-ReactDOM.render(<App/>,
-  document.getElementById('app'));
+ReactDOM.render(<NewUserForm/>,
+  document.getElementById('newUserForm'));

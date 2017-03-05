@@ -2,10 +2,6 @@ import React from 'react';
 
 class FormField extends React.Component {
 
-  // constructor() {
-  //   super();
-  // }
-
   render() {
     return (
       <div>

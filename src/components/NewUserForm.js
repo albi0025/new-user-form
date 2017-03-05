@@ -3,6 +3,11 @@ import FormField from './FormField';
 
 class NewUserForm extends React.Component {
 
+  constructor() {
+    super();
+    this.passwordErrorText = "Password Must Contain At Least 8 Characters";
+    this.usernameErrorText = "Username must be a valid email address"
+  }
   // Return true or false based on whether or not the
   // target element's value is a valid email address. Valid email requires
   // an @ character and a period. The period must follow the @ symbol and
@@ -33,11 +38,12 @@ class NewUserForm extends React.Component {
   render() {
     return (
       <div>
-        <div><h1>Error!</h1></div>
         <form>
-          <FormField validation={this.userNameValidation}
+          <FormField errorText={this.usernameErrorText}
+                     validation={this.userNameValidation}
                      id="username" label="Username:"/>
-          <FormField validation={this.passwordValidation}
+          <FormField errorText={this.passwordErrorText}
+                     validation={this.passwordValidation}
                      id="password" label="Password:"/>
           <input type="submit" value="Submit" />
         </form>

@@ -4,9 +4,9 @@ import FormField from './FormField';
 class NewUserForm extends React.Component {
 
   // Return true or false based on whether or not the
-  // target elements value is a valid email address. Valid email requires
+  // target element's value is a valid email address. Valid email requires
   // an @ character and a period. The period must follow the @ symbol and
-  // the neither the period or the @ can be the first or last character.
+  // neither the period or the @ can be the first or last character.
   userNameValidation(e) {
     let str = e.target.value;
     let splitByAt = str.split("@");
@@ -20,6 +20,16 @@ class NewUserForm extends React.Component {
     return true;
   }
 
+  // Return true or false based on whether or not the target element's value
+  // is a valid password. A valid password is at least 8 characters long.
+  passwordValidation(e) {
+    let password = e.target.value.length;
+    if(password < 8) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     return (
       <div>
@@ -27,7 +37,8 @@ class NewUserForm extends React.Component {
         <form>
           <FormField validation={this.userNameValidation}
                      id="username" label="Username:"/>
-          <FormField id="password" label="Password:"/>
+          <FormField validation={this.passwordValidation}
+                     id="password" label="Password:"/>
           <input type="submit" value="Submit" />
         </form>
       </div>

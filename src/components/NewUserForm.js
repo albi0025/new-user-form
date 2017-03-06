@@ -5,8 +5,9 @@ class NewUserForm extends React.Component {
 
   constructor() {
     super();
-    this.passwordErrorText = "Password Must Contain At Least 8 Characters";
-    this.usernameErrorText = "Username must be a valid email address"
+    this.passwordErrorText = "Password must contain at least 8 characters";
+    this.usernameErrorText = "Username must be a valid email address";
+    this.verifyErrorText = "Password does not match";
   }
   // Return true or false based on whether or not the
   // target element's value is a valid email address. Valid email requires
@@ -27,6 +28,7 @@ class NewUserForm extends React.Component {
 
   // Return true or false based on whether or not the target element's value
   // is a valid password. A valid password is at least 8 characters long.
+
   passwordValidation(e) {
     let password = e.target.value.length;
     if(password < 8) {
@@ -35,9 +37,20 @@ class NewUserForm extends React.Component {
     return true;
   }
 
+  // Return true or false base on whether or not the first password input
+  // matches the second password input.
+  passwordMatch(e) {
+    let password1 = document.getElementById('password').value;
+    let password2 = e.target.value;
+    if(password2 === password1) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     return (
-      <div>
+      <div className="container jumbotron">
         <form>
           <FormField errorText={this.usernameErrorText}
                      validation={this.userNameValidation}
@@ -45,6 +58,9 @@ class NewUserForm extends React.Component {
           <FormField errorText={this.passwordErrorText}
                      validation={this.passwordValidation}
                      id="password" label="Password:"/>
+         <FormField id="verifyPassword" label="Verify Password:"
+                     errorText={this.verifyErrorText}
+                     validation={this.passwordMatch}/>
           <input type="submit" value="Submit" />
         </form>
       </div>
